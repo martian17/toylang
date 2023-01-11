@@ -4,13 +4,13 @@ I hope others will find this interpreter helpful in designing their own language
 
 # Usage
 Clone this repository and execute the following
-```
+```bash
 node toylang.mjs test.toylang
 ```
 
 # Example
 test.toylang
-```
+```go
 //this program calculates the fibonacci sequence
 func fib(n){
     // := is for variable declaration
