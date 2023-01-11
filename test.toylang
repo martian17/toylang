@@ -1,0 +1,16 @@
+func fib(n){
+    a := 0;
+    b := 1;
+    //print(n,a,b);
+    for(i := 0; i < n; i = i+1){
+        c := a+b;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+
+for(i := 0; i < 10; i = i+1){
+    print("number "+i+" from fibonacci is: "+fib(i));
+}
+
