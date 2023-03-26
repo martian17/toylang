@@ -1,0 +1,62 @@
+func getVacant(from,to){
+    if(from == 0){
+        if(to == 1){
+            return 2;
+        }elif(to == 2){
+            return 1;
+        }
+    }elif(from == 1){
+        if(to == 0){
+            return 2;
+        }elif(to == 2){
+            return 0;
+        }
+    }elif(from == 2){
+        if(to == 0){
+            return 1;
+        }elif(to == 1){
+            return 0;
+        }
+    }
+}
+
+
+func move(n,from,to){
+    if(n == 1){
+        print("move disc from", from, "to", to);
+    }else{
+        vacant := getVacant(from,to);
+        move(n-1,from,vacant);
+        print("move disc from", from, "to", to);
+        move(n-1,vacant,to);
+    }
+}
+
+
+func readNumber_helper(n){
+    c := getchar(n);
+    if(c == 10){
+        return n;
+    }
+    c = c - 48;
+    return readNumber_helper(n*10+c);
+}
+
+func readNumber(){
+    return readNumber_helper(0);
+}
+
+//get number from input and solve for moves
+move(readNumber(),0,2);
+
+
+
+// test for getVacant
+// for(i := 0; i < 3; i = i + 1){
+//     for(j := 0; j < 3; j = j + 1){
+//         if(i != j){
+//             print(i,j);
+//             print(getVacant(i,j));
+//         }
+//     }
+// }
