@@ -59,7 +59,7 @@ let splitExpression = function(exp,spl){
     for(let i = 0; i < exp.length; i++){
         let c = exp[i];
         if(c === "\""){
-            i = skipString(exp,i+1)+1;
+            i = skipString(exp,i+1);
         }if(c.match(/[\(\[\{]/)){
             parens++;
         }else if(c.match(/[\)\]\}]/)){
