@@ -75,14 +75,13 @@ let execScope = function(scope,lines,i){
                         continue;
                     }
                 }
-                if(line === "}"){
-                    break;
-                }else{
+                if(line !== "}"){
                     let scope_inner = new Scope(scope);
                     i = execScope(scope_inner,lines,i+1);
                     while(lines[i] !== "}"){
                         i = skipToScopeEnd(lines,i+1);
                     }
+                    if(scope_inner.get("break") || scope_inner.get("return")[0])return i;
                 }
                 break;
             }
