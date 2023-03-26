@@ -69,7 +69,7 @@ let splitExpression = function(exp,spl){
             st = i+1;
         }
     }
-    matches.push(exp.slice(st));
+    if(st !== exp.length)matches.push(exp.slice(st));
     return matches.map(trim);
 };
 
