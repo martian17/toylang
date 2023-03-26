@@ -10,6 +10,11 @@ let processLang = function(str){
     if(DEBUG)console.log(lines);
     let rootScope = new Scope(null);
     rootScope.declare("print",console.log);
+    rootScope.declare("getchar",()=>{
+        let buffer = Buffer.alloc(1);
+        fs.readSync(0, buffer, 0, 1);
+        return buffer[0];
+    });
     rootScope.declare("break",false);
     rootScope.declare("return",[false,undefined]);
     execScope(rootScope,lines,0);
