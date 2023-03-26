@@ -67,8 +67,9 @@ let execScope = function(scope,lines,i){
             i = skipToScopeEnd(lines,i+1);
         }else if(line.match(/^if\s*\(/)){
             while(true){
+                line = lines[i];
                 if(line.match(/^if\s*\(/) || line.match(/^}\s*elif/)){
-                    let cond = line.match(/^if\s*\(([\s\S]+)\)\s*\{/)[1].trim();
+                    let cond = line.match(/^(?:if\s*|}\s*elif\s*)\(([\s\S]+)\)\s*\{/)[1].trim();
                     if(!execExpression(scope,cond)){
                         i = skipToScopeEnd(lines,i+1);
                         continue;
